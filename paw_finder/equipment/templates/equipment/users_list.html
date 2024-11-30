@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<p><a class="btn btn-default" href="{% url 'equipment_users_list' %}">Users Listing</a></p>
+<table class="table">
+<tr>
+<td>ID</td><td>Link</td>
+    <td>name</td>
+    <td>slug</td>
+    <td>created</td>
+    <td>last_updated</td>
+    <td>consent_personal_date</td>
+    <td>consent_to_send_SMS</td>
+    <td>consent_to_send_whatsapp</td>
+    <td>consent_to_telegram</td>
+    <td>phone_main</td>
+    <td>phone_addict</td>
+    <td>whatsapp</td>
+    <td>telegram</td>
+</tr>
+{% for object in object_list %}
+<tr>
+    <td>{{object.pk}}</td>
+    <td><a href="{{object.get_absolute_url}}">{{object}}</a></td>
+    <td>{{ object.name }}</td>
+    <td>{{ object.slug }}</td>
+    <td>{{ object.created }}</td>
+    <td>{{ object.last_updated }}</td>
+    <td>{{ object.consent_personal_date }}</td>
+    <td>{{ object.consent_to_send_SMS }}</td>
+    <td>{{ object.consent_to_send_whatsapp }}</td>
+    <td>{{ object.consent_to_telegram }}</td>
+    <td>{{ object.phone_main }}</td>
+    <td>{{ object.phone_addict }}</td>
+    <td>{{ object.whatsapp }}</td>
+    <td>{{ object.telegram }}</td>
+</tr>
+{% endfor %}
+</table><a class="btn btn-primary" href="{% url 'equipment_users_create' %}">Create new Users</a>
+{% endblock %}
